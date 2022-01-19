@@ -5,21 +5,16 @@ import java.lang.reflect.InvocationTargetException;
 
 public class MainReflection {
 
-    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException {
 
-        User panos = new User(123, new Person("Eleni", 65), new Person("Giorgos", 75));
-        User popi = new User(321, new Person("Soula", 60), new Person("Giannis", 65));
-
-        Class<?> clazz = panos.getClass();
-        Field[] fields = User.class.getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
+        User user = User.class.getConstructor().newInstance();
+        for (Field field : User.class.getDeclaredFields()) {
             if (field.getType() == Person.class) {
-                field.set(panos, new Person("Tasos", 23));
+                field.setAccessible(true);
+                field.set(user, Person.class.getConstructor().newInstance());
             }
         }
+        System.out.println(user);
 
-
-        System.out.println(panos.getFather().getName());
     }
 }
