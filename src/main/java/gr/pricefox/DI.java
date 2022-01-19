@@ -1,4 +1,4 @@
-package gr.pricefox.lib;
+package gr.pricefox;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;

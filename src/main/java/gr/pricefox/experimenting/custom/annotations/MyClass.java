@@ -1,6 +1,6 @@
 package gr.pricefox.experimenting.custom.annotations;
 
-import gr.pricefox.exception.CustomAnnotationException;
+import gr.pricefox.CustomAnnotationException;
 import lombok.Getter;
 import lombok.Setter;
 

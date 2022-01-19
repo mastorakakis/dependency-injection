@@ -1,6 +1,5 @@
 package gr.pricefox;
 
-import gr.pricefox.lib.DI;
 import gr.pricefox.service.MyService;
 import gr.pricefox.service.OtherService;
 

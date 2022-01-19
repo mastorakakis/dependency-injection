@@ -1,4 +1,4 @@
-package gr.pricefox.exception;
+package gr.pricefox;
 
 public class CustomAnnotationException extends Throwable {
 
