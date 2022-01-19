@@ -2,7 +2,7 @@ package gr.pricefox.experimenting.custom.annotations;
 
 import gr.pricefox.exception.CustomAnnotationException;
 
-public class Main {
+public class MainAnnotations {
 
     public static void main(String[] args) throws CustomAnnotationException, ClassNotFoundException {
 
