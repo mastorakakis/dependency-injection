@@ -16,9 +16,12 @@ public class Main {
         System.out.println(myService);
         MyService myService1 = di.singletonOf(MyService.class);
         System.out.println(myService1);
+
         OtherService otherService = di.oneOf(OtherService.class);
         System.out.println(otherService);
         OtherService otherService1 = di.oneOf(OtherService.class);
         System.out.println(otherService1);
+
+
     }
 }

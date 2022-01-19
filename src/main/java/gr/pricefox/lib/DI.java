@@ -18,11 +18,10 @@ public class DI {
     private final Map<Class<?>, Object> classMap = new HashMap<>();
 
     public <T> T singletonOf(Class<T> theClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        T t;
         if (classMap.containsKey(theClass)) {
             return (T) classMap.get(theClass);
         }
-        t = theClass.getConstructor().newInstance();
+        T t = theClass.getConstructor().newInstance();
         classMap.put(theClass, t);
         return t;
     }
