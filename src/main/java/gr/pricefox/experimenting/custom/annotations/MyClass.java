@@ -13,7 +13,7 @@ public class MyClass {
 
     public String getScope() throws ClassNotFoundException, CustomAnnotationException {
 
-        Class<?> c = Class.forName("pricefox.experimenting.custom.annotations.MyClass");
+        Class<?> c = Class.forName("gr.pricefox.experimenting.custom.annotations.MyClass");
 
         if (!c.isAnnotationPresent(CustomAnnotation.class)) {
             throw new CustomAnnotationException(c.getName() + "is not annotated");

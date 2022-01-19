@@ -8,7 +8,7 @@ public class Main {
         AccessingAllClassesInPackage instance = new AccessingAllClassesInPackage();
 
         Set<Class<?>> classes =
-                instance.findAllClassesUsingClassLoader("pricefox.experimenting.get.packageclasses");
+                instance.findAllClassesUsingClassLoader("gr.pricefox.experimenting.get.packageclasses");
 
         System.out.println(classes);
     }

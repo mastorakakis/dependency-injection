@@ -6,7 +6,7 @@ public class InvalidClass {
 
     public String getScope() throws ClassNotFoundException, CustomAnnotationException {
 
-        Class<?> c = Class.forName("pricefox.experimenting.custom.annotations.InvalidClass");
+        Class<?> c = Class.forName("gr.pricefox.experimenting.custom.annotations.InvalidClass");
 
         if (!c.isAnnotationPresent(CustomAnnotation.class)) {
             throw new CustomAnnotationException(c.getName() + " is not annotated");
