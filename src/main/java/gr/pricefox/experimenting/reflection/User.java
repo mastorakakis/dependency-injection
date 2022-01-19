@@ -9,10 +9,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class User implements Person {
+public class User {
 
-    private String name;
-    private int age;
+    private int pass;
+    private Person mother;
+    private Person father;
 
     public void showMessage() {
         System.out.println("Hello");
