@@ -1,25 +1,33 @@
 package gr.pricefox.lib;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DI {
 
     private static final DI instance = new DI();
 
-    private DI() {}
+    private DI() {
+    }
 
     public static DI getInstance() {
         return instance;
     }
 
-    public <T> T singletonOf(Class<T> theClass)  {
-        T t = null;
-        try {
-            t =  theClass.getConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            e.printStackTrace();
+    private final Map<Class<?>, Object> classMap = new HashMap<>();
+
+    public <T> T singletonOf(Class<T> theClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        T t;
+        if (classMap.containsKey(theClass)) {
+            return (T) classMap.get(theClass);
         }
+        t = theClass.getConstructor().newInstance();
+        classMap.put(theClass, t);
         return t;
     }
 
+    public <T> T oneOf(Class<T> theClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        return theClass.getConstructor().newInstance();
+    }
 }
