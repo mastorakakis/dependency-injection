@@ -17,7 +17,7 @@ public class Main {
     }
 
     public static void req1(DI di) throws InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException, CustomAnnotationException{
+            InstantiationException, IllegalAccessException, CustomAnnotationException {
         System.out.println("======Singleton==========");
 //        MyService myService = di.singletonOf(MyService.class);
 //        MyService myService1 = di.singletonOf(MyService.class);
@@ -30,7 +30,6 @@ public class Main {
         System.out.println(myServiceAnnotated2);
         System.out.println("         " + myServiceAnnotated2.getMyRepository());
 
-
         System.out.println("======Prototype===========");
 //        OtherService otherService = di.oneOf(OtherService.class);
 //        OtherService otherService1 = di.oneOf(OtherService.class);
@@ -42,7 +41,6 @@ public class Main {
         System.out.println("         " + otherServiceAnnotated.getOtherRepository());
         System.out.println(otherServiceAnnotated2);
         System.out.println("         " + otherServiceAnnotated2.getOtherRepository());
-
 
         System.out.println("=======Invalid=============");
         InvalidService invalidService = di.instanceOf(InvalidService.class);

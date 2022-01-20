@@ -25,7 +25,8 @@ public class DI {
         return theClass.getConstructor().newInstance();
     }
 
-    public <T> T instanceOf(Class<T> theClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, CustomAnnotationException {
+    public <T> T instanceOf(Class<T> theClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
+            InstantiationException, CustomAnnotationException {
         if (theClass.isAnnotationPresent(Component.class)) {
             Component annotation = theClass.getAnnotation(Component.class);
             if (classMap.containsKey(theClass)) {
