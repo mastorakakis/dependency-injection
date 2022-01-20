@@ -25,7 +25,7 @@ public class DI {
         if (classMap.containsKey(theClass)) {
             return (T) classMap.get(theClass);
         }
-        T t = theClass.getConstructor().newInstance();
+        T t = oneOf(theClass);
         classMap.put(theClass, t);
         return t;
     }
@@ -40,7 +40,7 @@ public class DI {
             if (classMap.containsKey(theClass)) {
                 return (T) classMap.get(theClass);
             }
-            T t = theClass.getConstructor().newInstance();
+            T t = oneOf(theClass);
             if (annotation.scope() == Scope.SINGLETON) {
                 classMap.put(theClass, t);
             }
