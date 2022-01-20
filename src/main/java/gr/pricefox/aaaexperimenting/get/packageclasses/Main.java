@@ -1,4 +1,4 @@
-package gr.pricefox.experimenting.get.packageclasses;
+package gr.pricefox.aaaexperimenting.get.packageclasses;
 
 import java.util.Set;
 

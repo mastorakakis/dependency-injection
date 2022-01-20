@@ -1,4 +1,4 @@
-package gr.pricefox.experimenting.reflection;
+package gr.pricefox.aaaexperimenting.reflection;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

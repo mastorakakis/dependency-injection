@@ -1,4 +1,4 @@
-package gr.pricefox.experimenting.custom.annotations;
+package gr.pricefox.aaaexperimenting.custom.annotations;
 
 import gr.pricefox.CustomAnnotationException;
 

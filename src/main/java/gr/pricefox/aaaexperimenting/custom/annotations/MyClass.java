@@ -1,4 +1,4 @@
-package gr.pricefox.experimenting.custom.annotations;
+package gr.pricefox.aaaexperimenting.custom.annotations;
 
 import gr.pricefox.CustomAnnotationException;
 import lombok.Getter;
@@ -13,10 +13,10 @@ public class MyClass {
 
     public String getScope() throws ClassNotFoundException, CustomAnnotationException {
 
-        Class<?> c = Class.forName("gr.pricefox.experimenting.custom.annotations.MyClass");
+        Class<?> c = Class.forName("gr.pricefox.aaaexperimenting.custom.annotations.MyClass");
 
         if (!c.isAnnotationPresent(CustomAnnotation.class)) {
-            throw new CustomAnnotationException(c.getName() + "is not annotated");
+            throw new CustomAnnotationException(c.getName() + " is not annotated");
         }
         CustomAnnotation anno = c.getAnnotation(CustomAnnotation.class);
         return anno.scope();
