@@ -11,23 +11,13 @@ import java.util.Map;
 public class DI {
 
     private static final DI instance = new DI();
+    private final Map<Class<?>, Object> classMap = new HashMap<>();
 
     private DI() {
     }
 
     public static DI getInstance() {
         return instance;
-    }
-
-    private final Map<Class<?>, Object> classMap = new HashMap<>();
-
-    public <T> T singletonOf(Class<T> theClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        if (classMap.containsKey(theClass)) {
-            return (T) classMap.get(theClass);
-        }
-        T t = oneOf(theClass);
-        classMap.put(theClass, t);
-        return t;
     }
 
     public <T> T oneOf(Class<T> theClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
