@@ -5,14 +5,19 @@ import gr.pricefox.service.MyService;
 import gr.pricefox.service.OtherService;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 
 public class Main {
 
-    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IllegalAccessException, CustomAnnotationException {
+    public static void main(String[] args) throws CustomAnnotationException, NoSuchMethodException, InstantiationException,
+            IllegalAccessException, InvocationTargetException {
 
         DI di = DI.getInstance();
+//        req1(di);
+    }
 
+    public static void req1(DI di) throws InvocationTargetException, NoSuchMethodException,
+            InstantiationException, IllegalAccessException, CustomAnnotationException{
         System.out.println("======Singleton==========");
 //        MyService myService = di.singletonOf(MyService.class);
 //        MyService myService1 = di.singletonOf(MyService.class);

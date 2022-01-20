@@ -6,6 +6,7 @@ import gr.pricefox.annotation.Scope;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DI {
@@ -43,6 +44,10 @@ public class DI {
             return t;
         }
         throw new CustomAnnotationException(theClass.getName() + " is not annotated");
+    }
+
+    public <T> List<Class<? extends T>> listOf(Class<T> theClass) {
+        return null;
     }
 }
 
