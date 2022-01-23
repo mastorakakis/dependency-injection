@@ -9,10 +9,10 @@ public class OtherService {
 
     private OtherRepository otherRepository;
 
-    public OtherService() {
+    private OtherService() {
     }
 
-    public OtherService(OtherRepository otherRepository) {
+    private OtherService(OtherRepository otherRepository) {
         this.otherRepository = otherRepository;
     }
 

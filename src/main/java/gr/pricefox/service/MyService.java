@@ -8,10 +8,10 @@ public class MyService {
 
     private MyRepository myRepository;
 
-    public MyService() {
+    private MyService() {
     }
 
-    public MyService(MyRepository myRepository) {
+    private MyService(MyRepository myRepository) {
         this.myRepository = myRepository;
     }
 

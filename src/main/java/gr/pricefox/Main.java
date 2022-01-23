@@ -15,39 +15,37 @@ public class Main {
 
         DI di = DI.getInstance();
 
-//        req1(di);
+        req1(di);
+        System.out.println("\nClass Implementations:");
         req2(di, CarInsuranceProvider.class);
     }
 
     public static void req1(DI di) throws InvocationTargetException, NoSuchMethodException,
             InstantiationException, IllegalAccessException, CustomAnnotationException {
         System.out.println("======Singleton==========");
-//        MyService myService = di.singletonOf(MyService.class);
-//        MyService myService1 = di.singletonOf(MyService.class);
-//        System.out.println(myService);
-//        System.out.println(myService1);
-        MyService myServiceAnnotated = di.instanceOf(MyService.class);
-        MyService myServiceAnnotated2 = di.instanceOf(MyService.class);
+        MyService myServiceAnnotated = di.objectOf(MyService.class);
+        MyService myServiceAnnotated2 = di.objectOf(MyService.class);
         System.out.println(myServiceAnnotated);
         System.out.println("         " + myServiceAnnotated.getMyRepository());
         System.out.println(myServiceAnnotated2);
         System.out.println("         " + myServiceAnnotated2.getMyRepository());
 
         System.out.println("======Prototype===========");
-//        OtherService otherService = di.oneOf(OtherService.class);
-//        OtherService otherService1 = di.oneOf(OtherService.class);
-//        System.out.println(otherService);
-//        System.out.println(otherService1);
-        OtherService otherServiceAnnotated = di.instanceOf(OtherService.class);
-        OtherService otherServiceAnnotated2 = di.instanceOf(OtherService.class);
+        OtherService otherServiceAnnotated = di.objectOf(OtherService.class);
+        OtherService otherServiceAnnotated2 = di.objectOf(OtherService.class);
         System.out.println(otherServiceAnnotated);
         System.out.println("         " + otherServiceAnnotated.getOtherRepository());
         System.out.println(otherServiceAnnotated2);
         System.out.println("         " + otherServiceAnnotated2.getOtherRepository());
 
         System.out.println("=======Invalid=============");
-        InvalidService invalidService = di.instanceOf(InvalidService.class);
-        System.out.println(invalidService);
+        try {
+            InvalidService invalidService = di.objectOf(InvalidService.class);
+            System.out.println(invalidService);
+        } catch (CustomAnnotationException e) {
+            System.out.println("Exception: " + e);
+        }
+
     }
 
     public static <T> void req2(DI di, Class<T> theInterface) {
