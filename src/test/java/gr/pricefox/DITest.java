@@ -50,7 +50,13 @@ public class DITest {
     }
 
     @org.junit.Test
-    public void unsatisfiedDependency() {
-
+    public void unsatisfiedDependency() throws InvocationTargetException, NoSuchMethodException,
+            InstantiationException, CustomAnnotationException, IllegalAccessException {
+        InvalidService service = null;
+        try {
+            service = di.objectOf(InvalidService.class);
+        } catch (CustomAnnotationException e) {
+            assertNull(service);
+        }
     }
 }

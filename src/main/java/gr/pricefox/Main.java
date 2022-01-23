@@ -18,6 +18,14 @@ public class Main {
         req1(di);
         System.out.println("\nClass Implementations:");
         req2(di, CarInsuranceProvider.class);
+
+        InvalidService service = null;
+        try {
+            service = di.objectOf(InvalidService.class);
+        } catch (CustomAnnotationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Invalid service: " + service);
+        }
     }
 
     public static void req1(DI di) throws InvocationTargetException, NoSuchMethodException,
