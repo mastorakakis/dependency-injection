@@ -4,8 +4,10 @@ import gr.pricefox.annotation.Component;
 import gr.pricefox.annotation.Scope;
 
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -28,12 +30,15 @@ public class DI {
         return instance;
     }
 
-    public <T> T oneOf(Class<T> theClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        return theClass.getConstructor().newInstance();
+    public <T> T oneOf(Class<T> theClass) throws NoSuchMethodException, IllegalAccessException,
+            InvocationTargetException, InstantiationException {
+        Constructor<T> constructor = theClass.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        return constructor.newInstance();
     }
 
-    public <T> T instanceOf(Class<T> theClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
-            InstantiationException, CustomAnnotationException {
+    public <T> T objectOf(Class<T> theClass) throws NoSuchMethodException, IllegalAccessException,
+            InvocationTargetException, InstantiationException, CustomAnnotationException {
         if (theClass.isAnnotationPresent(Component.class)) {
             Component annotation = theClass.getAnnotation(Component.class);
             if (classMap.containsKey(theClass)) {
@@ -46,7 +51,7 @@ public class DI {
             for (Field field : theClass.getDeclaredFields()) {
                 if (field.getType().isAnnotationPresent(Component.class)) {
                     field.setAccessible(true);
-                    field.set(t, instanceOf(field.getType()));
+                    field.set(t, objectOf(field.getType()));
                 }
             }
             return t;
@@ -54,26 +59,25 @@ public class DI {
         throw new CustomAnnotationException(theClass.getName() + " is not annotated");
     }
 
-    public <T> List<Class<T>> listOf(Class<T> theClass) {
-        List<String> packageNames = getAllPackageNames();
-        List<Class<T>> theClassSubClasses = new ArrayList<>();
-        for (String packageName : packageNames) {
+    public <T> List<Class<T>> listOf(Class<T> theInterface) {
+        List<Class<T>> subClassesOfInterface = new ArrayList<>();
+
+        for (String packageName : getAllPackageNames()) {
             Set<Class<?>> classes = findAllClassesUsingClassLoader(packageName);
             for (Class<?> classElement: classes) {
-                if (Arrays.asList(classElement.getInterfaces()).contains(theClass)) {
-                    theClassSubClasses.add((Class<T>) classElement);
+                if (Arrays.asList(classElement.getInterfaces()).contains(theInterface)) {
+                    subClassesOfInterface.add((Class<T>) classElement);
                 }
             }
         }
-        return theClassSubClasses;
+        return subClassesOfInterface;
     }
 
     public List<String> getAllPackageNames() {
-        List<String> collect = Arrays.stream(Package.getPackages())
+        return Arrays.stream(Package.getPackages())
                 .map(Package::getName)
                 .filter(s -> s.startsWith(this.getClass().getPackageName()))
                 .collect(Collectors.toList());
-        return collect;
     }
 
     public Set<Class<?>> findAllClassesUsingClassLoader(String packageName) {
