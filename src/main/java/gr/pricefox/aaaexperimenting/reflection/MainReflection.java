@@ -2,6 +2,8 @@ package gr.pricefox.aaaexperimenting.reflection;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainReflection {
 
@@ -16,5 +18,8 @@ public class MainReflection {
         }
         System.out.println(user);
 
+        User user1 = new User();
+        System.out.println(Arrays.asList(user.getClass().getInterfaces()).get(0));
+        List<Class<?>> classList = Arrays.asList(user.getClass().getInterfaces());
     }
 }

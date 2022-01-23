@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class User {
+public class User implements Creature {
 
     private int pass;
     private Person mother;

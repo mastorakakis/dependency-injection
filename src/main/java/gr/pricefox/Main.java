@@ -1,11 +1,12 @@
 package gr.pricefox;
 
+import gr.pricefox.model.CarInsuranceProvider;
 import gr.pricefox.service.InvalidService;
 import gr.pricefox.service.MyService;
 import gr.pricefox.service.OtherService;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -13,7 +14,9 @@ public class Main {
             IllegalAccessException, InvocationTargetException {
 
         DI di = DI.getInstance();
+
 //        req1(di);
+        req2(di, CarInsuranceProvider.class);
     }
 
     public static void req1(DI di) throws InvocationTargetException, NoSuchMethodException,
@@ -45,5 +48,10 @@ public class Main {
         System.out.println("=======Invalid=============");
         InvalidService invalidService = di.instanceOf(InvalidService.class);
         System.out.println(invalidService);
+    }
+
+    public static <T> void req2(DI di, Class<T> theInterface) {
+        List<Class<T>> classes = di.listOf(theInterface);
+        classes.forEach(element -> System.out.println(element.getSimpleName()));
     }
 }
