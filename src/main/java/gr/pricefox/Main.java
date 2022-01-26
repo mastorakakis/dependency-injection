@@ -1,6 +1,10 @@
 package gr.pricefox;
 
+import gr.pricefox.model.AllianzProvider;
+import gr.pricefox.model.AnekLines;
+import gr.pricefox.model.AnyTimeProvider;
 import gr.pricefox.model.CarInsuranceProvider;
+import gr.pricefox.model.MinettaProvider;
 import gr.pricefox.service.InvalidService;
 import gr.pricefox.service.MyService;
 import gr.pricefox.service.OtherService;
@@ -21,6 +25,7 @@ public class Main {
 
     public static void req1(DI di) throws InvocationTargetException, NoSuchMethodException,
             InstantiationException, IllegalAccessException, CustomAnnotationException {
+
         System.out.println("======Singleton==========");
         MyService myServiceAnnotated = di.objectOf(MyService.class);
         MyService myServiceAnnotated2 = di.objectOf(MyService.class);
@@ -47,9 +52,21 @@ public class Main {
         }
     }
 
-    public static <T> void req2(DI di, Class<T> theInterface) {
+    public static <T> void req2(DI di, Class<T> theInterface) throws InvocationTargetException, NoSuchMethodException,
+            InstantiationException, CustomAnnotationException, IllegalAccessException {
+
         System.out.println("\n" + theInterface.getSimpleName() + " Implementations:");
-        List<Class<T>> classes = di.classListOf(theInterface);
-        classes.forEach(element -> System.out.println(element.getSimpleName()));
+        AnyTimeProvider anyTimeProvider = di.objectOf(AnyTimeProvider.class);
+        AnyTimeProvider anyTimeProvider2 = di.objectOf(AnyTimeProvider.class);
+        AnyTimeProvider anyTimeProvider3 = di.objectOf(AnyTimeProvider.class);
+        MinettaProvider minettaProvider = di.objectOf(MinettaProvider.class);
+        AllianzProvider allianzProvider = di.objectOf(AllianzProvider.class);
+        AllianzProvider allianzProvider2 = di.objectOf(AllianzProvider.class);
+        AnekLines anekLines = di.objectOf(AnekLines.class);
+
+        List<CarInsuranceProvider> carInsuranceProviders = di.listOf(CarInsuranceProvider.class);
+        carInsuranceProviders.forEach(c -> System.out.println(c.getClass().getSimpleName()));
+
+        System.out.println(carInsuranceProviders.get(0).getMyService());
     }
 }

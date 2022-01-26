@@ -1,10 +1,10 @@
 package gr.pricefox;
 
-import gr.pricefox.model.Allianz;
+import gr.pricefox.model.AllianzProvider;
 import gr.pricefox.model.AnekLines;
-import gr.pricefox.model.AnyTime;
+import gr.pricefox.model.AnyTimeProvider;
 import gr.pricefox.model.CarInsuranceProvider;
-import gr.pricefox.model.Minetta;
+import gr.pricefox.model.MinettaProvider;
 import gr.pricefox.service.InvalidService;
 import gr.pricefox.service.MyService;
 import gr.pricefox.service.OtherService;
@@ -22,9 +22,9 @@ public class DITest {
     public void listOf() {
         List<Class<CarInsuranceProvider>> classList = di.classListOf(CarInsuranceProvider.class);
         assertFalse(classList.contains(AnekLines.class));
-        assertTrue(classList.contains(Allianz.class));
-        assertTrue(classList.contains(AnyTime.class));
-        assertTrue(classList.contains(Minetta.class));
+        assertTrue(classList.contains(AllianzProvider.class));
+        assertTrue(classList.contains(AnyTimeProvider.class));
+        assertTrue(classList.contains(MinettaProvider.class));
     }
 
     @org.junit.Test

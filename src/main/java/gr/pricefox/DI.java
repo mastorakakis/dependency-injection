@@ -59,6 +59,14 @@ public class DI {
         throw new CustomAnnotationException(theClass.getName() + " is not annotated");
     }
 
+    public <T> List<T> listOf(Class<T> theInterface) {
+        return classMap.values()
+                .stream()
+                .filter(theInterface::isInstance)
+                .map(theInterface::cast)
+                .collect(Collectors.toList());
+    }
+
     public <T> List<Class<T>> classListOf(Class<T> theInterface) {
         List<Class<T>> subClassesOfInterface = new ArrayList<>();
 
