@@ -20,7 +20,7 @@ public class DITest {
 
     @org.junit.Test
     public void listOf() {
-        List<Class<CarInsuranceProvider>> classList = di.listOf(CarInsuranceProvider.class);
+        List<Class<CarInsuranceProvider>> classList = di.classListOf(CarInsuranceProvider.class);
         assertFalse(classList.contains(AnekLines.class));
         assertTrue(classList.contains(Allianz.class));
         assertTrue(classList.contains(AnyTime.class));

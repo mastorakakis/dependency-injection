@@ -16,7 +16,6 @@ public class Main {
         DI di = DI.getInstance();
 
         req1(di);
-        System.out.println("\nClass Implementations:");
         req2(di, CarInsuranceProvider.class);
     }
 
@@ -49,7 +48,8 @@ public class Main {
     }
 
     public static <T> void req2(DI di, Class<T> theInterface) {
-        List<Class<T>> classes = di.listOf(theInterface);
+        System.out.println("\n" + theInterface.getSimpleName() + " Implementations:");
+        List<Class<T>> classes = di.classListOf(theInterface);
         classes.forEach(element -> System.out.println(element.getSimpleName()));
     }
 }

@@ -59,7 +59,7 @@ public class DI {
         throw new CustomAnnotationException(theClass.getName() + " is not annotated");
     }
 
-    public <T> List<Class<T>> listOf(Class<T> theInterface) {
+    public <T> List<Class<T>> classListOf(Class<T> theInterface) {
         List<Class<T>> subClassesOfInterface = new ArrayList<>();
 
         for (String packageName : getAllPackageNames()) {
