@@ -9,7 +9,6 @@ public class AllianzProvider implements CarInsuranceProvider {
     private MyService myService;
 
     private AllianzProvider() {
-
     }
 
     private AllianzProvider(MyService myService) {

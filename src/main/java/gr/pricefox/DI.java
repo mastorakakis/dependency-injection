@@ -56,7 +56,7 @@ public class DI {
             }
             return t;
         }
-        throw new CustomAnnotationException(theClass.getName() + " is not annotated");
+        throw new CustomAnnotationException(theClass.getName() + " is not a component");
     }
 
     public <T> List<T> listOf(Class<T> theInterface) {

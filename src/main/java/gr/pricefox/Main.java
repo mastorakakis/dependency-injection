@@ -38,9 +38,9 @@ public class Main {
         OtherService otherServiceAnnotated = di.objectOf(OtherService.class);
         OtherService otherServiceAnnotated2 = di.objectOf(OtherService.class);
         System.out.println(otherServiceAnnotated);
-        System.out.println("         " + otherServiceAnnotated.getOtherRepository());
+        System.out.println("         " + otherServiceAnnotated.getMyRepository());
         System.out.println(otherServiceAnnotated2);
-        System.out.println("         " + otherServiceAnnotated2.getOtherRepository());
+        System.out.println("         " + otherServiceAnnotated2.getMyRepository());
 
         System.out.println("=======Invalid=============");
         InvalidService service = null;
@@ -66,7 +66,5 @@ public class Main {
 
         List<CarInsuranceProvider> carInsuranceProviders = di.listOf(CarInsuranceProvider.class);
         carInsuranceProviders.forEach(c -> System.out.println(c.getClass().getSimpleName()));
-
-        System.out.println(carInsuranceProviders.get(0).getMyService());
     }
 }

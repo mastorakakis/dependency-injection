@@ -44,9 +44,9 @@ public class DITest {
         OtherService otherService = di.objectOf(OtherService.class);
         OtherService otherService2 = di.objectOf(OtherService.class);
         assertNotEquals(otherService, otherService2);
-        assertNotNull(otherService.getOtherRepository());
-        assertNotNull(otherService2.getOtherRepository());
-        assertEquals(otherService.getOtherRepository(), otherService2.getOtherRepository());
+        assertNotNull(otherService.getMyRepository());
+        assertNotNull(otherService2.getMyRepository());
+        assertEquals(otherService.getMyRepository(), otherService2.getMyRepository());
     }
 
     @org.junit.Test
