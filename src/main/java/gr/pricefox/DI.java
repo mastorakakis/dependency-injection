@@ -42,7 +42,9 @@ public class DI {
         if (theClass.isAnnotationPresent(Component.class)) {
             Component annotation = theClass.getAnnotation(Component.class);
             if (classMap.containsKey(theClass)) {
-                return (T) classMap.get(theClass);
+                if (theClass.isInstance(classMap.get(theClass))) {
+                    return theClass.cast(classMap.get(theClass));
+                }
             }
             T t = oneOf(theClass);
             if (annotation.scope() == Scope.SINGLETON) {
