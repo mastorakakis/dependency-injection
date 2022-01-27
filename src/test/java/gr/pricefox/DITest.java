@@ -1,16 +1,10 @@
 package gr.pricefox;
 
-import gr.pricefox.model.AllianzProvider;
-import gr.pricefox.model.AnekLines;
-import gr.pricefox.model.AnyTimeProvider;
-import gr.pricefox.model.CarInsuranceProvider;
-import gr.pricefox.model.MinettaProvider;
 import gr.pricefox.service.InvalidService;
 import gr.pricefox.service.MyService;
 import gr.pricefox.service.OtherService;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -20,11 +14,6 @@ public class DITest {
 
     @org.junit.Test
     public void listOf() {
-        List<Class<CarInsuranceProvider>> classList = di.classListOf(CarInsuranceProvider.class);
-        assertFalse(classList.contains(AnekLines.class));
-        assertTrue(classList.contains(AllianzProvider.class));
-        assertTrue(classList.contains(AnyTimeProvider.class));
-        assertTrue(classList.contains(MinettaProvider.class));
     }
 
     @org.junit.Test
